@@ -9,7 +9,7 @@ class Student(models.Model):
     phone_number = models.CharField(max_length=14)
     email = models.EmailField()
     gender = models.CharField(max_length=1, choices=(('M', 'Male'), ('F', 'Female')))
-    id_course = Course
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, null=True)
 
     class Meta:
         unique_together = (

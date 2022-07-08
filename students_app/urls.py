@@ -1,7 +1,15 @@
 from django.urls import path
-from students_app.views import StudentsViewSet
-
+from students_app.views import StudentViewSet
 
 urlpatterns = [
-    path('', StudentsViewSet.as_view({'get': 'list'}), name='students-list')
+    path('', StudentViewSet.as_view({'get': 'list', 'post': 'create'}), name='course-list'),
+    path('<int:pk>/', StudentViewSet.as_view(
+        {
+            'get': 'retrieve',
+            'delete': 'destroy',
+            'put': 'update'
+        }
+    ),
+         name='student-detail'
+         )
 ]
